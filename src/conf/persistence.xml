@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="FeedMe-WSPU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>com.feedme.entities.Manager</class>
+    <class>com.feedme.entities.Employee</class>
+    <class>com.feedme.entities.OrderStatus</class>
+    <class>com.feedme.entities.Category</class>
+    <class>com.feedme.entities.Log</class>
+    <class>com.feedme.entities.Priviledge</class>
+    <class>com.feedme.entities.Product</class>
+    <class>com.feedme.entities.Property</class>
+    <class>com.feedme.entities.OrderDetail</class>
+    <class>com.feedme.entities.Promoted</class>
+    <exclude-unlisted-classes>false</exclude-unlisted-classes>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://marksmanager.cemqqa00nibo.us-east-1.rds.amazonaws.com:3306/db_feedme?zeroDateTimeBehavior=convertToNull&amp;amp;useUnicode=true&amp;amp;characterEncoding=UTF-8&amp;amp;characterSetResults=utf8&amp;amp;connectionCollation=utf8_unicode_ci"/>
+      <property name="javax.persistence.jdbc.user" value="feedme_ws"/>
+      <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+      <property name="javax.persistence.jdbc.password" value="j1HUk*fCCOQYx4x"/>
+    </properties>
+  </persistence-unit>
+</persistence>
