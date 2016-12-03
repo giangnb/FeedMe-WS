@@ -16,7 +16,9 @@ import javax.jws.WebParam;
  * @author Giang
  */
 @WebService(serviceName = "ApplicationSevice")
-public class ApplicationSevice implements CategoryService{
+public class ApplicationSevice implements CategoryService,
+        EmployeeService, LogService, ManagerService, OrderService, OrderStatusService, PriviledgeService,
+        ProductService, PromotedService, PropertyService{
     
     @WebMethod(operationName = "addCategory")
     @Override
