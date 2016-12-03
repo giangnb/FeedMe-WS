@@ -16,17 +16,10 @@ import javax.jws.WebParam;
  * @author Giang
  */
 @WebService(serviceName = "ApplicationSevice")
-public class ApplicationSevice {
-
-    /**
-     * This is a sample web service operation
-     */
-    @WebMethod(operationName = "hello")
-    public String hello(@WebParam(name = "name") String txt) {
-        return "Hello " + txt + " !";
-    }
+public class ApplicationSevice implements CategoryService{
     
     @WebMethod(operationName = "addCategory")
+    @Override
     public void addCategory(@WebParam(name = "category") CategoryDTO c) {
         new CategoryDAO().addCategory(c);
     }
