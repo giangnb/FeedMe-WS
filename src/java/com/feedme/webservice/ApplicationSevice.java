@@ -5,6 +5,8 @@
  */
 package com.feedme.webservice;
 
+import com.feedme.dao.CategoryDAO;
+import com.feedme.dto.CategoryDTO;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
@@ -22,5 +24,10 @@ public class ApplicationSevice {
     @WebMethod(operationName = "hello")
     public String hello(@WebParam(name = "name") String txt) {
         return "Hello " + txt + " !";
+    }
+    
+    @WebMethod(operationName = "addCategory")
+    public void addCategory(@WebParam(name = "category") CategoryDTO c) {
+        new CategoryDAO().addCategory(c);
     }
 }
