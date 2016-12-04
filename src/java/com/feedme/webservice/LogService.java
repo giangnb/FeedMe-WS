@@ -5,10 +5,18 @@
  */
 package com.feedme.webservice;
 
+import com.feedme.dto.LogDTO;
+import java.util.List;
+
 /**
  *
  * @author Giang
  */
 public interface LogService {
-    
+    void addLog(LogDTO log);
+    void updateLog(LogDTO log);
+    void removeLog(int id);
+    List<LogDTO> fetchLogs(long from, long to);
+    List<LogDTO> fetchLogsByEmployee(short id);
+    LogDTO fetchLogById(int id);
 }

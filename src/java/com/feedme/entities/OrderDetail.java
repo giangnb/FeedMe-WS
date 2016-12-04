@@ -30,6 +30,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "OrderDetail.findAll", query = "SELECT o FROM OrderDetail o")
     , @NamedQuery(name = "OrderDetail.findById", query = "SELECT o FROM OrderDetail o WHERE o.id = :id")
+    , @NamedQuery(name = "OrderDetail.findByTime", query = "SELECT o FROM OrderDetail o WHERE o.ordertime BETWEEN :from AND :to")
+    , @NamedQuery(name = "OrderDetail.findByEmployee", query = "SELECT o FROM OrderDetail o WHERE o.employee = :employee AND o.ordertime BETWEEN :from AND :to")
     , @NamedQuery(name = "OrderDetail.findByOrdertime", query = "SELECT o FROM OrderDetail o WHERE o.ordertime = :ordertime")
     , @NamedQuery(name = "OrderDetail.findBySubtotal", query = "SELECT o FROM OrderDetail o WHERE o.subtotal = :subtotal")
     , @NamedQuery(name = "OrderDetail.findByDiscount", query = "SELECT o FROM OrderDetail o WHERE o.discount = :discount")
@@ -59,7 +61,7 @@ public class OrderDetail implements Serializable {
     private String foods;
     @Basic(optional = false)
     @Column(name = "subtotal")
-    private int subtotal;
+    private Double subtotal;
     @Basic(optional = false)
     @Column(name = "discount")
     private double discount;
@@ -83,7 +85,7 @@ public class OrderDetail implements Serializable {
         this.id = id;
     }
 
-    public OrderDetail(Integer id, String customer, String note, String ordertime, String foods, int subtotal, double discount) {
+    public OrderDetail(Integer id, String customer, String note, String ordertime, String foods, Double subtotal, double discount) {
         this.id = id;
         this.customer = customer;
         this.note = note;
@@ -133,11 +135,11 @@ public class OrderDetail implements Serializable {
         this.foods = foods;
     }
 
-    public int getSubtotal() {
+    public Double getSubtotal() {
         return subtotal;
     }
 
-    public void setSubtotal(int subtotal) {
+    public void setSubtotal(Double subtotal) {
         this.subtotal = subtotal;
     }
 

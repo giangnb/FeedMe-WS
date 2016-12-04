@@ -29,6 +29,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Log.findAll", query = "SELECT l FROM Log l")
     , @NamedQuery(name = "Log.findById", query = "SELECT l FROM Log l WHERE l.id = :id")
+    , @NamedQuery(name = "Log.findByTime", query = "SELECT l FROM Log l WHERE l.timestamp BETWEEN :form AND :to")
+    , @NamedQuery(name = "Log.findByEmployee", query = "SELECT l FROM Log l WHERE l.employee = :employee")
     , @NamedQuery(name = "Log.findByTitle", query = "SELECT l FROM Log l WHERE l.title = :title")
     , @NamedQuery(name = "Log.findByRatingAvg", query = "SELECT l FROM Log l WHERE l.ratingAvg = :ratingAvg")
     , @NamedQuery(name = "Log.findByTotalOrders", query = "SELECT l FROM Log l WHERE l.totalOrders = :totalOrders")
@@ -53,6 +55,9 @@ public class Log implements Serializable {
     @Basic(optional = false)
     @Column(name = "ttoal_income")
     private double ttoalIncome;
+    @Basic(optional = false)
+    @Column(name = "_timestamp")
+    private String timestamp;
     @JoinColumn(name = "employee", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Employee employee;
@@ -118,6 +123,14 @@ public class Log implements Serializable {
 
     public void setEmployee(Employee employee) {
         this.employee = employee;
+    }
+
+    public String getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(String timestamp) {
+        this.timestamp = timestamp;
     }
 
     @Override

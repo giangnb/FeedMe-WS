@@ -5,17 +5,16 @@
  */
 package com.feedme.webservice;
 
+import com.feedme.dto.EmployeeDTO;
 import com.feedme.dto.ManagerDTO;
-import java.util.List;
 
 /**
  *
  * @author Giang
  */
-public interface ManagerService {
-    void addManager(ManagerDTO m);
-    void updateManager(ManagerDTO m);
-    void removeManager(short id);
-    List<ManagerDTO> fetchManagers();
-    ManagerDTO fetchManagerById(short id);
+public interface AccountService {
+    ManagerDTO loginManager(String user, String pass);
+    EmployeeDTO loginEmployee(ManagerDTO m, String user);
+    
+    void updateManagerPassword(ManagerDTO m);
 }

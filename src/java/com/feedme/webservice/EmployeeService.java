@@ -5,10 +5,19 @@
  */
 package com.feedme.webservice;
 
+import com.feedme.dto.EmployeeDTO;
+import java.util.List;
+
 /**
  *
  * @author Giang
  */
 public interface EmployeeService {
-    
+    void addEmployee(EmployeeDTO e);
+    void updateEmployee(EmployeeDTO e);
+    void removeEmployee(short id);
+    List<EmployeeDTO> fetchEmployees();
+    List<EmployeeDTO> fetchEmployeesByManager(short id);
+    EmployeeDTO fetchEmployeeById(short id);
+    EmployeeDTO fetchEmployeeByUsername(String username);
 }

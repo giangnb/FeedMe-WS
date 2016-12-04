@@ -35,7 +35,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Manager.findAll", query = "SELECT m FROM Manager m")
     , @NamedQuery(name = "Manager.findById", query = "SELECT m FROM Manager m WHERE m.id = :id")
     , @NamedQuery(name = "Manager.findByUsername", query = "SELECT m FROM Manager m WHERE m.username = :username")
-    , @NamedQuery(name = "Manager.findByPassword", query = "SELECT m FROM Manager m WHERE m.password = :password")})
+    , @NamedQuery(name = "Manager.login", query = "SELECT m FROM Manager m WHERE m.username = :username AND m.password = :password")})
 public class Manager implements Serializable {
 
     private static final long serialVersionUID = 1L;

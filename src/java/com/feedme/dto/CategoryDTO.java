@@ -19,6 +19,10 @@ public class CategoryDTO implements Serializable{
         c = new Category();
     }
 
+    public CategoryDTO(Category c) {
+        this.c = c;
+    }
+
     public Category getCategory() {
         return c;
     }

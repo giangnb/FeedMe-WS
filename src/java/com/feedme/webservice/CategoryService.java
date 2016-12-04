@@ -6,6 +6,7 @@
 package com.feedme.webservice;
 
 import com.feedme.dto.CategoryDTO;
+import java.util.List;
 
 /**
  *
@@ -13,4 +14,8 @@ import com.feedme.dto.CategoryDTO;
  */
 public interface CategoryService {
     public void addCategory(CategoryDTO c);
+    public void updateCategory(CategoryDTO c);
+    public void removeCategory(short id);
+    public List<CategoryDTO> fetchCategories();
+    public CategoryDTO fetchCategoryById(short id);
 }
