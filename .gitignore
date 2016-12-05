@@ -62,14 +62,12 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 nbproject/private/private.xml
-<<<<<<< Updated upstream
 /build/
-=======
 
 nbproject/ant-deploy.xml
 
 nbproject/ant-deploy.xml
 
 nbproject/project.properties
->>>>>>> Stashed changes
 /dist/
+nbproject/private/*

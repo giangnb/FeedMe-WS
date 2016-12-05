@@ -15,6 +15,7 @@ import java.util.List;
 public interface OrderStatusService {
     public void addOrderStatus(OrderStatusDTO dto);   
      public List<OrderStatusDTO> fetchOrderStatus();
+     public OrderStatusDTO fetchOrderStatusById(short id);
      public boolean updateOrderStatus (OrderStatusDTO dto);
      public boolean removeOrderStatus(short id);
 }
