@@ -5,10 +5,13 @@
  */
 package com.feedme.webservice;
 
+import com.feedme.dto.ProductDTO;
+import java.util.List;
+
 /**
  *
  * @author Giang
  */
 public interface ProductService {
-    
+    //public List<ProductDTO> fetchProducts();
 }

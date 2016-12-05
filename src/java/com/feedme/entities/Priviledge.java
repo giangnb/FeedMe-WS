@@ -5,6 +5,7 @@
  */
 package com.feedme.entities;
 
+import com.feedme.dto.PriviledgeDTO;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
@@ -75,6 +76,11 @@ public class Priviledge implements Serializable {
 
     public Priviledge(Short id) {
         this.id = id;
+    }
+    
+    private PriviledgeDTO dto;
+    private Priviledge (PriviledgeDTO dto) {
+         this.dto = dto;
     }
 
     public Priviledge(Short id, String name, String description, boolean view, boolean hr, boolean editor, boolean manager, boolean admin) {

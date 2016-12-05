@@ -5,6 +5,7 @@
  */
 package com.feedme.entities;
 
+import com.feedme.dto.OrderStatusDTO;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
@@ -52,7 +53,11 @@ public class OrderStatus implements Serializable {
 
     public OrderStatus() {
     }
-
+    
+    private OrderStatusDTO dto; 
+    public OrderStatus(OrderStatusDTO dto) {
+      this.dto = dto;
+    }
     public OrderStatus(Short id) {
         this.id = id;
     }
