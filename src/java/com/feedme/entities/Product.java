@@ -50,9 +50,11 @@ public class Product implements Serializable {
     @Column(name = "name")
     private String name;
     @Basic(optional = false)
-    @Lob
     @Column(name = "_description")
     private String description;
+    @Basic(optional = true)
+    @Column(name = "imageFile")
+    private String imageFile="";
     @Basic(optional = false)
     @Column(name = "price")
     private double price;
@@ -60,7 +62,6 @@ public class Product implements Serializable {
     @Column(name = "promotion")
     private String promotion;
     @Basic(optional = false)
-    @Lob
     @Column(name = "info")
     private String info;
     @Basic(optional = false)
