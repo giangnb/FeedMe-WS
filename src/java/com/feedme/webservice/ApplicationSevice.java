@@ -388,9 +388,9 @@ public class ApplicationSevice implements CategoryService,
     }
     
     @Override
-    @WebMethod(operationName = "fetchPropertieById")
-    public PropertyDTO fetchPropertyByKey(@WebParam(name = "property") PropertyDTO dto) {
-        return new PropertyDAO().fetchPropertyByKey(dto);
+    @WebMethod(operationName = "fetchPropertieByKey")
+    public PropertyDTO fetchPropertyByKey(@WebParam(name = "key") String key) {
+        return new PropertyDAO().fetchPropertyByKey(key);
     }
     
     @Override
@@ -410,6 +410,5 @@ public class ApplicationSevice implements CategoryService,
     public void removeProperty(@WebParam(name = "propertyKey") String key) {
         new PropertyDAO().removeProperty(key);
     }
-
     // </editor-fold>
 }

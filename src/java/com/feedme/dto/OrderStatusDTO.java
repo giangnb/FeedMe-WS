@@ -53,7 +53,5 @@ public class OrderStatusDTO implements Serializable{
 
     public void setIsStopped(boolean isStopped) {
       this.os.setIsStopped(isStopped);
-    }
-
-     
+    }    
 }

@@ -16,7 +16,7 @@ public interface PropertyService {
 
     public List<PropertyDTO> fetchProperties();
 
-    public PropertyDTO fetchPropertyByKey(PropertyDTO dto);
+    public PropertyDTO fetchPropertyByKey(String key);
 
     public void addProperty(PropertyDTO dto);
 

@@ -36,8 +36,8 @@ public class PropertyDAO {
         return list;
     }
     
-    public PropertyDTO fetchPropertyByKey(PropertyDTO dto) {
-        Property p = em.find(Property.class, dto.getKey());
+    public PropertyDTO fetchPropertyByKey(String key) {
+        Property p = em.find(Property.class, key);
         if (p == null) {
             return null;
         }
@@ -81,8 +81,5 @@ public class PropertyDAO {
     private void updateProp(Property p, PropertyDTO dto) {
         p.setKey(dto.getKey());
         p.setValue(p.getValue());
-    }
-    public static void main(String[] args) {
-        System.out.println(new PropertyDAO().fetchProperties());
     }
 }

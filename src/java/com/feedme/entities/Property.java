@@ -31,11 +31,11 @@ public class Property implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @Column(name = "key")
+    @Column(name = "_key")
     private String key;
     @Basic(optional = false)
     @Lob
-    @Column(name = "value")
+    @Column(name = "_value")
     private String value;
 
     public Property() {
