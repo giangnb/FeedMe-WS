@@ -5,10 +5,22 @@
  */
 package com.feedme.webservice;
 
+import com.feedme.dto.PriviledgeDTO;
+import java.util.List;
+
 /**
  *
  * @author Giang
  */
 public interface PriviledgeService {
-    
+
+    public List<PriviledgeDTO> fetchPriviledges();
+
+    public PriviledgeDTO fetchPriviledgeById(short id);
+
+    public void addPriviledge(PriviledgeDTO dto);
+
+    public void updatePriviledge(PriviledgeDTO dto);
+
+    public void removePriviledge(short id);
 }

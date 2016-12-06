@@ -13,5 +13,14 @@ import java.util.List;
  * @author Giang
  */
 public interface ProductService {
-    //public List<ProductDTO> fetchProducts();
+
+    public List<ProductDTO> fetchProducts();
+
+    public ProductDTO fetchProductById(short id);
+
+    public void addProduct(ProductDTO dto);
+
+    public void updateProduct(ProductDTO dto);
+
+    public void removeProduct(short id);
 }

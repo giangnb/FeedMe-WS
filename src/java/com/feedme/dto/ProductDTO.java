@@ -6,6 +6,7 @@
 package com.feedme.dto;
 
 import com.feedme.entities.Category;
+import com.feedme.entities.Product;
 import java.io.Serializable;
 
 /**
@@ -13,93 +14,81 @@ import java.io.Serializable;
  * @author havietduc
  */
 public class ProductDTO implements Serializable{
-    private Short id;
-    private String name;
-    private String description;
-    private double price;
-    private String promotion;
-    private String info;
-    private boolean isActive;
-    private Category category;
+    private Product p;
 
     public ProductDTO() {
+        p = new Product();
     }
 
-    public ProductDTO(Short id, String name, String description, double price, String promotion, String info, boolean isActive, Category category) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-        this.price = price;
-        this.promotion = promotion;
-        this.info = info;
-        this.isActive = isActive;
-        this.category = category;
+    public ProductDTO(Product p) {
+        this.p = p;
     }
-
-    public Short getId() {
-        return id;
+    
+    public Product getProduct(){
+       return p;
+    }
+     public Short getId() {
+        return p.getId();
     }
 
     public void setId(Short id) {
-        this.id = id;
+        this.p.setId(id);
     }
 
     public String getName() {
-        return name;
+        return p.getName();
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.p.setName(name);
     }
 
     public String getDescription() {
-        return description;
+        return p.getDescription();
     }
 
     public void setDescription(String description) {
-        this.description = description;
+        this.p.setDescription(description);
     }
 
     public double getPrice() {
-        return price;
+        return p.getPrice();
     }
 
     public void setPrice(double price) {
-        this.price = price;
+        this.p.setPrice(price);
     }
 
     public String getPromotion() {
-        return promotion;
+        return p.getPromotion();
     }
 
     public void setPromotion(String promotion) {
-        this.promotion = promotion;
+        this.p.setPromotion(promotion);
     }
 
     public String getInfo() {
-        return info;
+        return p.getInfo();
     }
 
     public void setInfo(String info) {
-        this.info = info;
+        this.p.setInfo(info);
     }
 
-    public boolean isIsActive() {
-        return isActive;
+    public boolean getIsActive() {
+        return p.getIsActive();
     }
 
     public void setIsActive(boolean isActive) {
-        this.isActive = isActive;
+        this.p.setIsActive(isActive);
     }
 
     public Category getCategory() {
-        return category;
+        return p.getCategory();
     }
 
     public void setCategory(Category category) {
-        this.category = category;
+        this.p.setCategory(category);
     }
-    
-    
-    
+
 }

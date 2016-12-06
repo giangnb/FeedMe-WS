@@ -5,10 +5,22 @@
  */
 package com.feedme.webservice;
 
+import com.feedme.dto.PropertyDTO;
+import java.util.List;
+
 /**
  *
  * @author Giang
  */
 public interface PropertyService {
-    
+
+    public List<PropertyDTO> fetchProperties();
+
+    public PropertyDTO fetchPropertyByKey(PropertyDTO dto);
+
+    public void addProperty(PropertyDTO dto);
+
+    public void updateProperty(PropertyDTO dto);
+
+    public void removeProperty(String key);
 }

@@ -16,6 +16,7 @@ import javax.persistence.Persistence;
 /**
  *
  * @author havietduc
+ * TEST: OK
  */
 public class OrderStatusDAO {
 
@@ -28,19 +29,19 @@ public class OrderStatusDAO {
         trans = em.getTransaction();
     }
 
-    public void addOrderStatus(OrderStatusDTO dto) {
+    public int addOrderStatus(OrderStatusDTO dto) {
         trans.begin();
         em.persist(dto.getOrderStatus());
         trans.commit();
+        return 1;
     }
 
     public List<OrderStatusDTO> fetchOrderStatus() {
         List<OrderStatusDTO> list = new ArrayList();
         List<OrderStatus> listEntity = em.createNamedQuery("OrderStatus.findAll").getResultList();
-        for (OrderStatus item : listEntity) {
-            OrderStatusDTO dto = new OrderStatusDTO(item);
+        listEntity.stream().map((item) -> new OrderStatusDTO(item)).forEach((dto) -> {
             list.add(dto);
-        }
+        });
 
         return list;
     }
@@ -65,15 +66,14 @@ public class OrderStatusDAO {
         return true;
     }
 
-    public boolean removeOrderStatus(short id) {
+    public void removeOrderStatus(short id) {
         OrderStatus os = em.find(OrderStatus.class, id);
         if (os == null) {
-            return false;
+            return;
         }
         em.getTransaction().begin();
         em.remove(os);
         em.getTransaction().commit();
-        return true;
+        
     }
-
 }
