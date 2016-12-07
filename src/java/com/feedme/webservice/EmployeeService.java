@@ -13,9 +13,9 @@ import java.util.List;
  * @author Giang
  */
 public interface EmployeeService {
-    void addEmployee(EmployeeDTO e);
-    void updateEmployee(EmployeeDTO e);
-    void removeEmployee(short id);
+    boolean addEmployee(EmployeeDTO e);
+    boolean updateEmployee(EmployeeDTO e);
+    boolean removeEmployee(short id);
     List<EmployeeDTO> fetchEmployees();
     List<EmployeeDTO> fetchEmployeesByManager(short id);
     EmployeeDTO fetchEmployeeById(short id);

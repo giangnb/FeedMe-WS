@@ -13,9 +13,9 @@ import java.util.List;
  * @author Giang
  */
 public interface ManagerService {
-    void addManager(ManagerDTO m);
-    void updateManager(ManagerDTO m);
-    void removeManager(short id);
+    boolean addManager(ManagerDTO m);
+    boolean updateManager(ManagerDTO m);
+    boolean removeManager(short id);
     List<ManagerDTO> fetchManagers();
     ManagerDTO fetchManagerById(short id);
 }

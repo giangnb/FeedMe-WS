@@ -13,9 +13,9 @@ import java.util.List;
  * @author Giang
  */
 public interface LogService {
-    void addLog(LogDTO log);
-    void updateLog(LogDTO log);
-    void removeLog(int id);
+    boolean addLog(LogDTO log);
+    boolean updateLog(LogDTO log);
+    boolean removeLog(int id);
     List<LogDTO> fetchLogs(long from, long to);
     List<LogDTO> fetchLogsByEmployee(short id);
     LogDTO fetchLogById(int id);

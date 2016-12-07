@@ -27,17 +27,18 @@ public class EmployeeDAO {
         trans = em.getTransaction();
     }
     
-    public void add(EmployeeDTO e) {
+    public boolean add(EmployeeDTO e) {
         trans.begin();
         em.persist(e.getEmployee());
         trans.commit();
+        return true;
     }
     
-    public void update(EmployeeDTO emp) {
+    public boolean update(EmployeeDTO emp) {
         Employee e = emp.getEmployee();
         Employee find = em.find(Employee.class, e.getId());
         if (find==null) {
-            return;
+            return false;
         }
         trans.begin();
         try {
@@ -46,19 +47,22 @@ public class EmployeeDAO {
             find.setManager(e.getManager());
             find.setUsername(e.getUsername());
             trans.commit();
+            return true;
         } catch(Exception ex) {
             trans.rollback();
+            return false;
         }
     }
     
-    public void remove(Short id) {
+    public boolean remove(Short id) {
         Employee find = em.find(Employee.class, id);
         if (find==null) {
-            return;
+            return false;
         }
         trans.begin();
         em.remove(find);
         trans.commit();
+        return true;
     }
     
     public List<EmployeeDTO> getAll() {

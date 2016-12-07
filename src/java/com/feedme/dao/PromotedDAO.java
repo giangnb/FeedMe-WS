@@ -43,38 +43,42 @@ public class PromotedDAO {
          return new PromotedDTO(p);
     }
     
-    public void addPromoted(PromotedDTO dto) {
+    public boolean addPromoted(PromotedDTO dto) {
        trans.begin();
        em.persist(dto.getPromoted());
        trans.commit();
-       
+       return true;
     }
     
-    public void updatePromoted(PromotedDTO dto) {
+    public boolean updatePromoted(PromotedDTO dto) {
         Promoted p = em.find(Promoted.class, dto.getId());
         if (p == null) {
-          return;
+          return false;
         } 
         try {
             trans.begin();
             updatePromt(p,dto);
             trans.commit();
+            return true;
         } catch (Exception e) {
             trans.rollback();
+            return false;
         } 
     }  
    
-    public void removePromoted(int id) {
+    public boolean removePromoted(int id) {
          Promoted p = em.find(Promoted.class, id);
         if (p == null) {
-          return;
+          return false;
         }
         try {
             trans.begin();
             em.remove(p);
             trans.commit();
+            return true;
         } catch (Exception e) {
             trans.rollback();
+            return false;
         } 
     }
     

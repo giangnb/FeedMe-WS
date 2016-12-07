@@ -27,17 +27,18 @@ public class LogDAO {
         trans = em.getTransaction();
     }
     
-    public void add(LogDTO l) {
+    public boolean add(LogDTO l) {
         trans.begin();
         em.persist(l.getLog());
         trans.commit();
+        return true;
     }
     
-    public void update(LogDTO log) {
+    public boolean update(LogDTO log) {
         Log l = log.getLog();
         Log find = em.find(Log.class, l.getId());
         if (find==null) {
-            return;
+            return false;
         }
         trans.begin();
         try {
@@ -47,19 +48,22 @@ public class LogDAO {
             find.setTotalOrders(l.getTotalOrders());
             find.setTtoalIncome(l.getTtoalIncome());
             trans.commit();
+            return true;
         } catch (Exception ex) {
             trans.rollback();
+            return true;
         }
     }
     
-    public void remove(int id) {
+    public boolean remove(int id) {
         Log find = em.find(Log.class, id);
         if (find==null) {
-            return;
+            return false;
         }
         trans.begin();
         em.remove(find);
         trans.commit();
+        return true;
     }
     
     public List<LogDTO> getAll(long from, long to) {

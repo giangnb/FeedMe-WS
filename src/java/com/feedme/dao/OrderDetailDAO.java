@@ -30,18 +30,19 @@ public class OrderDetailDAO {
         trans = em.getTransaction();
     }
     
-    public void add(OrderDetailDTO o) {
+    public boolean add(OrderDetailDTO o) {
         trans.begin();
         o.setOrdertime(new Date().getTime()+"");
         em.persist(o.getOrderDetail());
         trans.commit();
+        return true;
     }
     
-    public void update(OrderDetailDTO order) {
+    public boolean update(OrderDetailDTO order) {
         OrderDetail o = order.getOrderDetail();
         OrderDetail find = em.find(OrderDetail.class, o.getId());
         if (find==null) {
-            return;
+            return false;
         }
         trans.begin();
         try {
@@ -55,19 +56,22 @@ public class OrderDetailDAO {
             find.setStatus(o.getStatus());
             find.setSubtotal(o.getSubtotal());
             trans.commit();
+            return true;
         } catch (Exception ex) {
             trans.rollback();
+            return false;
         }
     }
     
-    public void remove(int id) {
+    public boolean remove(int id) {
         OrderDetail find = em.find(OrderDetail.class, id);
         if (find==null) {
-            return;
+            return false;
         }
         trans.begin();
         em.remove(find);
         trans.commit();
+        return true;
     }
     
     public List<OrderDetailDTO> getAll(long from, long to) {

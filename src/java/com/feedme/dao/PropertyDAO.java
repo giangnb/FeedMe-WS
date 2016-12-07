@@ -44,37 +44,42 @@ public class PropertyDAO {
         return new PropertyDTO(p);
     }
     
-    public void addProperty(PropertyDTO dto) {
+    public boolean addProperty(PropertyDTO dto) {
         trans.begin();
         em.persist(dto.getProperty());
         trans.commit();
+        return true;
     }
     
-    public void updateProperty(PropertyDTO dto) {
+    public boolean updateProperty(PropertyDTO dto) {
         Property p = em.find(Property.class, dto.getKey());
         if (p == null) {
-            return;
+            return false;
         }
         try {
             trans.begin();
             updateProp(p, dto);
             trans.commit();
+            return true;
         } catch (Exception e) {
             trans.rollback();
+            return false;
         }
     }
     
-    public void removeProperty(String key) {
+    public boolean removeProperty(String key) {
         Property p = em.find(Property.class, key);
         if (p == null) {
-            return;
+            return false;
         }
         try {
             trans.begin();
             em.remove(p);
             trans.commit();
+            return true;
         } catch (Exception e) {
             trans.rollback();
+            return false;
         }        
     }
     

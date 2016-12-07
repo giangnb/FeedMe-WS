@@ -17,10 +17,12 @@ public interface ProductService {
     public List<ProductDTO> fetchProducts();
 
     public ProductDTO fetchProductById(short id);
+    
+    public ProductDTO fetchProductByName(String name);
 
-    public void addProduct(ProductDTO dto);
+    public boolean addProduct(ProductDTO dto);
 
-    public void updateProduct(ProductDTO dto);
-
-    public void removeProduct(short id);
+    public boolean updateProduct(ProductDTO dto);
+    
+    public boolean removeProduct(short id);
 }

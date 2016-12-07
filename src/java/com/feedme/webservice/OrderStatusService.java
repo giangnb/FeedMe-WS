@@ -14,13 +14,13 @@ import java.util.List;
  */
 public interface OrderStatusService {
 
-    public void addOrderStatus(OrderStatusDTO dto);
+    public boolean addOrderStatus(OrderStatusDTO dto);
 
     public List<OrderStatusDTO> fetchOrderStatus();
 
     public OrderStatusDTO fetchOrderStatusById(short id);
 
-    public void updateOrderStatus(OrderStatusDTO dto);
+    public boolean updateOrderStatus(OrderStatusDTO dto);
 
-    public void removeOrderStatus(short id);
+    public boolean removeOrderStatus(short id);
 }

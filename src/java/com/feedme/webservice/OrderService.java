@@ -13,9 +13,9 @@ import java.util.List;
  * @author Giang
  */
 public interface OrderService {
-    void addOrder(OrderDetailDTO o);
-    void updateOrder(OrderDetailDTO o);
-    void removeOrder(int id);
+    boolean addOrder(OrderDetailDTO o);
+    boolean updateOrder(OrderDetailDTO o);
+    boolean removeOrder(int id);
     List<OrderDetailDTO> fetchOrders(long from, long to);
     List<OrderDetailDTO> fetchOrdersByEmployee(long from, long to, short id);
     OrderDetailDTO fetchOrderById(int id);

@@ -46,31 +46,32 @@ public class PriviledgeDAO {
         return new PriviledgeDTO(find);
     }
 
-    public void addPriviledge(PriviledgeDTO dto) {
+    public boolean addPriviledge(PriviledgeDTO dto) {
         em.getTransaction().begin();
         em.persist(dto.getPriviledge());
         em.getTransaction().commit();
+        return true;
     }
 
-    public void updatePriviledge(PriviledgeDTO dto) {
+    public boolean updatePriviledge(PriviledgeDTO dto) {
         Priviledge p = em.find(Priviledge.class, dto.getId());
         if (p == null) {
-            return;
+            return false;
         }
         em.getTransaction().begin();
         updatePriv(p, dto);
-        
+        return true;
     }
 
-    public void removePriviledge(short id) {
-
+    public boolean removePriviledge(short id) {
         Priviledge priv = em.find(Priviledge.class, id);
         if (priv == null) {
-            return;
+            return false;
         }
         em.getTransaction().begin();
         em.remove(priv);
         em.getTransaction().commit();
+        return true;
     }
 
     private void updatePriv(Priviledge p, PriviledgeDTO dto) {

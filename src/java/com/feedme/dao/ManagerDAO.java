@@ -29,19 +29,20 @@ public class ManagerDAO {
         trans = em.getTransaction();
     }
 
-    public void add(ManagerDTO m) {
+    public boolean add(ManagerDTO m) {
         m.getInfo().put("_lastChanged", new Date().getTime() + "");
         m.setPassword(Encrypt.hash("8ja374Z0B5sHYud" + m.getPassword() + "0j4212kE8CQhoPR"));
         trans.begin();
         em.persist(m.getManager());
         trans.commit();
+        return true;
     }
 
-    public void update(ManagerDTO manager) {
+    public boolean update(ManagerDTO manager) {
         Manager m = manager.getManager();
         Manager find = em.find(Manager.class, m.getId());
         if (find == null) {
-            return;
+            return false;
         }
         trans.begin();
         try {
@@ -49,17 +50,19 @@ public class ManagerDAO {
             find.setPriviledge(m.getPriviledge());
             find.setUsername(m.getUsername());
             trans.commit();
+            return true;
         } catch (Exception ex) {
             trans.rollback();
+            return false;
         }
     }
 
-    public void updatePassword(ManagerDTO manager) {
+    public boolean updatePassword(ManagerDTO manager) {
         Manager m = manager.getManager();
         manager.getInfo().put("_lastChanged", new Date().getTime() + "");
         Manager find = em.find(Manager.class, m.getId());
         if (find == null) {
-            return;
+            return false;
         }
         trans.begin();
         try {
@@ -67,19 +70,22 @@ public class ManagerDAO {
             m = manager.getManager();
             find.setInfo(m.getInfo());
             trans.commit();
+            return true;
         } catch (Exception ex) {
             trans.rollback();
+            return false;
         }
     }
 
-    public void remove(short id) {
+    public boolean remove(short id) {
         Manager find = em.find(Manager.class, id);
         if (find==null) {
-            return;
+            return false;
         }
         trans.begin();
         em.remove(find);
         trans.commit();
+        return true;
     }
 
     public List<ManagerDTO> getAll() {

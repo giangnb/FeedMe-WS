@@ -43,35 +43,39 @@ public class CategoryDAO {
         return new CategoryDTO(c);
     }
     
-    public void add(CategoryDTO c) {
+    public boolean add(CategoryDTO c) {
         trans.begin();
         em.persist(c.getCategory());
         trans.commit();
+        return true;
     }
     
-    public void update(CategoryDTO cat) {
+    public boolean update(CategoryDTO cat) {
         Category c = cat.getCategory();
         Category origin = em.find(Category.class, c.getId());
         if (origin==null) {
-            return;
+            return false;
         }
         trans.begin();
         try {
             origin.setDescription(c.getDescription());
             origin.setName(c.getName());
             trans.commit();
+            return true;
         } catch (Exception ex) {
             trans.rollback();
+            return false;
         }
     }
     
-    public void remove(Short id) {
+    public boolean remove(Short id) {
         Category c = em.find(Category.class, id);
         if (c==null) {
-            return;
+            return false;
         }
         trans.begin();
         em.remove(c);
         trans.commit();
+        return true;
     }
 }

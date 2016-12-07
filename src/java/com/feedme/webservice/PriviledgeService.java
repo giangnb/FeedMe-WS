@@ -18,9 +18,9 @@ public interface PriviledgeService {
 
     public PriviledgeDTO fetchPriviledgeById(short id);
 
-    public void addPriviledge(PriviledgeDTO dto);
+    public boolean addPriviledge(PriviledgeDTO dto);
 
-    public void updatePriviledge(PriviledgeDTO dto);
+    public boolean updatePriviledge(PriviledgeDTO dto);
 
-    public void removePriviledge(short id);
+    public boolean removePriviledge(short id);
 }

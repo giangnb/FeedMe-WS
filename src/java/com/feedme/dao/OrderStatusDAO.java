@@ -29,11 +29,11 @@ public class OrderStatusDAO {
         trans = em.getTransaction();
     }
 
-    public int addOrderStatus(OrderStatusDTO dto) {
+    public boolean addOrderStatus(OrderStatusDTO dto) {
         trans.begin();
         em.persist(dto.getOrderStatus());
         trans.commit();
-        return 1;
+        return true;
     }
 
     public List<OrderStatusDTO> fetchOrderStatus() {
@@ -66,14 +66,14 @@ public class OrderStatusDAO {
         return true;
     }
 
-    public void removeOrderStatus(short id) {
+    public boolean removeOrderStatus(short id) {
         OrderStatus os = em.find(OrderStatus.class, id);
         if (os == null) {
-            return;
+            return false;
         }
         em.getTransaction().begin();
         em.remove(os);
         em.getTransaction().commit();
-        
+        return true;
     }
 }

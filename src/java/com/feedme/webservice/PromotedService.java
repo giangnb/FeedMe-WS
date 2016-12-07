@@ -18,13 +18,9 @@ public interface PromotedService {
 
     public PromotedDTO fetchPromotedById(int id);
 
-    /**
-     *
-     * @param dto
-     */
-    public void addPromoted(PromotedDTO dto);
+    public boolean addPromoted(PromotedDTO dto);
 
-    public void updatePromoted(PromotedDTO dto);
+    public boolean updatePromoted(PromotedDTO dto);
 
-    public void removePromoted(int id);
+    public boolean removePromoted(int id);
 }

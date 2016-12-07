@@ -18,9 +18,9 @@ public interface PropertyService {
 
     public PropertyDTO fetchPropertyByKey(String key);
 
-    public void addProperty(PropertyDTO dto);
+    public boolean addProperty(PropertyDTO dto);
 
-    public void updateProperty(PropertyDTO dto);
+    public boolean updateProperty(PropertyDTO dto);
 
-    public void removeProperty(String key);
+    public boolean removeProperty(String key);
 }

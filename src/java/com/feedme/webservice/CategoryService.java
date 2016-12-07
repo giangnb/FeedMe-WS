@@ -13,9 +13,9 @@ import java.util.List;
  * @author Giang
  */
 public interface CategoryService {
-    public void addCategory(CategoryDTO c);
-    public void updateCategory(CategoryDTO c);
-    public void removeCategory(short id);
+    public boolean addCategory(CategoryDTO c);
+    public boolean updateCategory(CategoryDTO c);
+    public boolean removeCategory(short id);
     public List<CategoryDTO> fetchCategories();
     public CategoryDTO fetchCategoryById(short id);
 }

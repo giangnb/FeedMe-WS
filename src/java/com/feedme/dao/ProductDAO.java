@@ -41,34 +41,46 @@ public class ProductDAO {
           return new ProductDTO(p);
       }
       
-      public void addProduct(ProductDTO dto) {
+      public ProductDTO fetchProductByName(String name) {
+         Product p = em.find(Product.class, name);
+         if (p==null) {
+             return null;
+          }
+          return new ProductDTO(p);
+      }
+      
+      public boolean addProduct(ProductDTO dto) {
          trans.begin();
          em.persist(dto.getProduct());
          trans.commit();
-         
+         return true;
       }
       
-      public void updateProduct(ProductDTO dto) {
+      public boolean updateProduct(ProductDTO dto) {
          Product prd = em.find(Product.class, dto.getId());
          if (prd == null) {
-           return;
+           return false;
          }
          trans.begin();
           try {
               updateProd(prd, dto);
               trans.commit();
+              return true;
           } catch (Exception e) {
               trans.rollback();
+              return false;
           }
       }
       
-      public void removeProduct(short id) {
+      public boolean removeProduct(short id) {
           Product p = em.find(Product.class, id);
           if (p ==null) {
-          return;}
+          return false;
+          }
           trans.begin();
           em.remove(p);
           trans.commit();
+          return true;
       }
     private void updateProd(Product prd, ProductDTO dto) {
         prd.setId(dto.getId());
