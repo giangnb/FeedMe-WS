@@ -16,6 +16,7 @@ public class LogDTO implements Serializable{
     private Log l;
 
     public LogDTO() {
+        l = new Log();
     }
 
     public LogDTO(Log l) {

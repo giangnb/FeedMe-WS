@@ -23,6 +23,7 @@ public class OrderDetailDTO implements Serializable{
     private OrderDetail o;
 
     public OrderDetailDTO() {
+        o = new OrderDetail();
     }
 
     public OrderDetailDTO(OrderDetail o) {

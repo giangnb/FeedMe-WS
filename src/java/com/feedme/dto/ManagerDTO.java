@@ -18,6 +18,7 @@ public class ManagerDTO implements Serializable{
     private Manager m;
 
     public ManagerDTO() {
+        m = new Manager();
     }
 
     public ManagerDTO(Manager m) {
