@@ -124,7 +124,18 @@ public class ManagerDAO {
                 .setParameter("username", user)
                 .setParameter("password", pass).getResultList();
         if (resultList.size() > 0) {
-            return new ManagerDTO(resultList.get(0));
+            Manager m = resultList.get(0);
+            trans.begin();
+            try {
+                Information info = Json.DeserializeObject(m.getInfo(), Information.class);
+                info.put("_lastLogin", new Date().getTime()+"");
+                m.setInfo(Json.SerializeObject(info));
+                update(new ManagerDTO(m));
+                trans.commit();
+            } catch (Exception ex) {
+                trans.rollback();
+            }
+            return new ManagerDTO(m);
         }
         return null;
     }
