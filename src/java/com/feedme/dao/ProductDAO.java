@@ -42,11 +42,23 @@ public class ProductDAO {
       }
       
       public ProductDTO fetchProductByName(String name) {
-         Product p = em.find(Product.class, name);
-         if (p==null) {
-             return null;
-          }
-          return new ProductDTO(p);
+         ProductDTO dto = new ProductDTO();
+         List<Product> list  = em.createNamedQuery("Product.findByName").setParameter("name", name).getResultList();
+         if (list.isEmpty()) {
+            return null;
+         }
+         list.forEach((prod)-> {
+             dto.setId(prod.getId());
+             dto.setName(prod.getName());
+             dto.setDescription(prod.getDescription());
+             dto.setPrice(prod.getPrice());
+             dto.setPromotion(prod.getPromotion());
+             dto.setInfo(prod.getInfo());
+             dto.setIsActive(prod.getIsActive());
+             dto.setCategory(prod.getCategory());
+         });
+         
+          return dto;
       }
       
       public boolean addProduct(ProductDTO dto) {

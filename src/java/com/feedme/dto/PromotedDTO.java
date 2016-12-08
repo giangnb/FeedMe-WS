@@ -52,11 +52,11 @@ public class PromotedDTO implements Serializable{
         this.p.setToTime(toTime);
     }
 
-    public Product getProduct() {
-        return p.getProduct();
+    public ProductDTO getProduct() {
+        return new ProductDTO(p.getProduct());
     }
-
-    public void setProduct(Product product) {
-        this.p.setProduct(product);
+    
+    public void setProduct(ProductDTO productDto) {
+        this.p.setProduct(productDto.getProduct());
     }
 }

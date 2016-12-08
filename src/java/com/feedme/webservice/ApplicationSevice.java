@@ -330,8 +330,8 @@ public class ApplicationSevice implements CategoryService,
     
      @Override
      @WebMethod(operationName = "fetchProductsByName")
-    public ProductDTO fetchProductByName(@WebParam(name = "productId") String name) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public ProductDTO fetchProductByName(@WebParam(name = "productName") String name) {
+        return new ProductDAO().fetchProductByName(name);
     }
     
     @Override

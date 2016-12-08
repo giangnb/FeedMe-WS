@@ -58,8 +58,9 @@ public class PriviledgeDAO {
         if (p == null) {
             return false;
         }
-        em.getTransaction().begin();
+        trans.begin();
         updatePriv(p, dto);
+        trans.commit();
         return true;
     }
 

@@ -86,6 +86,6 @@ public class PromotedDAO {
            p.setId(dto.getId());
            p.setFromTime(dto.getFromTime());
            p.setToTime(dto.getToTime());
-           p.setProduct(dto.getProduct());
+           p.setProduct(dto.getProduct().getProduct());
      }
 }

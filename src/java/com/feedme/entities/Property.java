@@ -90,5 +90,4 @@ public class Property implements Serializable {
     public String toString() {
         return "com.feedme.entities.Property[ key=" + key + " ]";
     }
-    
 }

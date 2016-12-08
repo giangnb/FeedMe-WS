@@ -27,6 +27,7 @@ public class ProductDTO implements Serializable{
     public Product getProduct(){
        return p;
     }
+    
      public Short getId() {
         return p.getId();
     }
@@ -90,5 +91,4 @@ public class ProductDTO implements Serializable{
     public void setCategory(Category category) {
         this.p.setCategory(category);
     }
-
 }

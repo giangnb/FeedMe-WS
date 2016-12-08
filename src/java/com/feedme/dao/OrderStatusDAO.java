@@ -59,11 +59,16 @@ public class OrderStatusDAO {
         if (os == null) {
             return false;
         }
+        try{
         em.getTransaction().begin();
-        os.setIsStopped(dto.getIsStopped());
-        os.setName(dto.getName());
+        updateOrderStatusMethod(dto,os);
         em.getTransaction().commit();
         return true;
+        }
+        catch (Exception e) {
+           em.getTransaction().rollback();
+           return false;
+        }
     }
 
     public boolean removeOrderStatus(short id) {
@@ -75,5 +80,11 @@ public class OrderStatusDAO {
         em.remove(os);
         em.getTransaction().commit();
         return true;
+    }
+
+    private void updateOrderStatusMethod(OrderStatusDTO dto, OrderStatus os) {
+       os.setId(dto.getId());
+       os.setName(dto.getName());
+       os.setIsStopped(dto.getIsStopped());
     }
 }
