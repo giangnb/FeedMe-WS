@@ -58,7 +58,7 @@ public class PropertyDAO {
         }
         try {
             trans.begin();
-            updateProp(p, dto);
+            p.setValue(dto.getValue());
             trans.commit();
             return true;
         } catch (Exception e) {
@@ -81,10 +81,5 @@ public class PropertyDAO {
             trans.rollback();
             return false;
         }        
-    }
-    
-    private void updateProp(Property p, PropertyDTO dto) {
-        p.setKey(dto.getKey());
-        p.setValue(p.getValue());
     }
 }
