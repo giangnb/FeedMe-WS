@@ -1,6 +1,6 @@
 package com.feedme.dao;
 
-import com.feedme.dto.OrderStatusDTO;
+//import com.feedme.dto.OrderStatusDTO;
 import com.feedme.entities.OrderStatus;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,39 +29,34 @@ public class OrderStatusDAO {
         trans = em.getTransaction();
     }
 
-    public boolean addOrderStatus(OrderStatusDTO dto) {
+    public boolean addOrderStatus(OrderStatus status) {
         trans.begin();
-        em.persist(dto.getOrderStatus());
+        em.persist(status);
         trans.commit();
         return true;
     }
 
-    public List<OrderStatusDTO> fetchOrderStatus() {
-        List<OrderStatusDTO> list = new ArrayList();
-        List<OrderStatus> listEntity = em.createNamedQuery("OrderStatus.findAll").getResultList();
-        listEntity.stream().map((item) -> new OrderStatusDTO(item)).forEach((dto) -> {
-            list.add(dto);
-        });
-
-        return list;
+    public List<OrderStatus> fetchOrderStatus() {
+        return em.createNamedQuery("OrderStatus.findAll").getResultList();
     }
 
-    public OrderStatusDTO fetchOrderStatusById(short id) {
+    public OrderStatus fetchOrderStatusById(short id) {
         OrderStatus find = em.find(OrderStatus.class, id);
         if (find == null) {
             return null;
         }
-        return new OrderStatusDTO(find);
+        return find;
     }
 
-    public boolean updateOrderStatus(OrderStatusDTO dto) {
-        OrderStatus os = em.find(OrderStatus.class, dto.getId());
+    public boolean updateOrderStatus(OrderStatus os) {
+        OrderStatus origin = em.find(OrderStatus.class, os.getId());
         if (os == null) {
             return false;
         }
         try{
         em.getTransaction().begin();
-        updateOrderStatusMethod(dto,os);
+        origin.setName(os.getName());
+        origin.setIsStopped(os.getIsStopped());
         em.getTransaction().commit();
         return true;
         }
@@ -82,9 +77,8 @@ public class OrderStatusDAO {
         return true;
     }
 
-    private void updateOrderStatusMethod(OrderStatusDTO dto, OrderStatus os) {
-       os.setId(dto.getId());
-       os.setName(dto.getName());
-       os.setIsStopped(dto.getIsStopped());
-    }
+//    private void updateOrderStatusMethod(OrderStatusDTO dto, OrderStatus os) {
+//       os.setName(dto.getName());
+//       os.setIsStopped(dto.getIsStopped());
+//    }
 }

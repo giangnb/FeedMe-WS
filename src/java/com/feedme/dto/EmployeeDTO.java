@@ -6,17 +6,14 @@
 package com.feedme.dto;
 
 import com.feedme.entities.Employee;
-import com.feedme.info.Information;
-import com.feedme.utils.Json;
 import java.io.Serializable;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
  * @author Giang
  */
-public class EmployeeDTO implements Serializable{
+public class EmployeeDTO implements Serializable {
+
     private Employee e;
 
     public EmployeeDTO() {
@@ -34,12 +31,13 @@ public class EmployeeDTO implements Serializable{
     public void setEmployee(Employee e) {
         this.e = e;
     }
+
     public Short getId() {
         return e.getId();
     }
 
     public void setId(int id) {
-        e.setId(Short.parseShort(id+""));
+        e.setId(Short.parseShort(id + ""));
     }
 
     public String getUsername() {
@@ -50,19 +48,12 @@ public class EmployeeDTO implements Serializable{
         e.setUsername(username);
     }
 
-    public Information getInfo() {
-        try {
-            return Json.DeserializeObject(e.getInfo(), Information.class);
-        } catch (Exception ex) {
-            return new Information();
-        }
+    public String getInfo() {
+        return e.getInfo();
     }
 
-    public void setInfo(Information info) {
-        try {
-            e.setInfo(Json.SerializeObject(info));
-        } catch (Exception ex) {
-        }
+    public void setInfo(String info) {
+        e.setInfo(info);
     }
 
     public boolean getIsEnabled() {

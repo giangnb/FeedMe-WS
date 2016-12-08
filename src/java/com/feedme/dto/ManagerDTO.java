@@ -6,8 +6,6 @@
 package com.feedme.dto;
 
 import com.feedme.entities.Manager;
-import com.feedme.info.Information;
-import com.feedme.utils.Json;
 import java.io.Serializable;
 
 /**
@@ -57,19 +55,12 @@ public class ManagerDTO implements Serializable{
         m.setPassword(password);
     }
 
-    public Information getInfo() {
-        try {
-            return Json.DeserializeObject(m.getInfo(), Information.class);
-        } catch (Exception ex) {
-            return new Information();
-        }
+    public String getInfo() {
+       return m.getInfo();
     }
 
-    public void setInfo(Information info) {
-        try {
-            m.setInfo(Json.SerializeObject(info));
-        } catch (Exception ex) {
-        }
+    public void setInfo(String info) {
+        m.setInfo(info);
     }
 
     public PriviledgeDTO getPriviledge() {

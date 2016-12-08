@@ -7,10 +7,14 @@ package com.feedme.dao;
 
 import com.feedme.dto.ManagerDTO;
 import com.feedme.entities.Manager;
+import com.feedme.info.Information;
 import com.feedme.utils.Encrypt;
+import com.feedme.utils.Json;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
@@ -30,7 +34,12 @@ public class ManagerDAO {
     }
 
     public boolean add(ManagerDTO m) {
-        m.getInfo().put("_lastChanged", new Date().getTime() + "");
+        try {
+            Information inf = Json.DeserializeObject(m.getInfo(), Information.class);
+            inf.put("_lastChanged", new Date().getTime() + "");
+            m.setInfo(Json.SerializeObject(inf));
+        } catch (Exception ex) {
+        }
         m.setPassword(Encrypt.hash("8ja374Z0B5sHYud" + m.getPassword() + "0j4212kE8CQhoPR"));
         trans.begin();
         em.persist(m.getManager());
@@ -59,7 +68,12 @@ public class ManagerDAO {
 
     public boolean updatePassword(ManagerDTO manager) {
         Manager m = manager.getManager();
-        manager.getInfo().put("_lastChanged", new Date().getTime() + "");
+        try {
+            Information inf = Json.DeserializeObject(m.getInfo(), Information.class);
+            inf.put("_lastChanged", new Date().getTime() + "");
+            m.setInfo(Json.SerializeObject(inf));
+        } catch (Exception ex) {
+        }
         Manager find = em.find(Manager.class, m.getId());
         if (find == null) {
             return false;
@@ -79,7 +93,7 @@ public class ManagerDAO {
 
     public boolean remove(short id) {
         Manager find = em.find(Manager.class, id);
-        if (find==null) {
+        if (find == null) {
             return false;
         }
         trans.begin();
@@ -99,17 +113,17 @@ public class ManagerDAO {
 
     public ManagerDTO getById(short id) {
         Manager find = em.find(Manager.class, id);
-        if (find==null) {
+        if (find == null) {
             return null;
         }
         return new ManagerDTO(find);
     }
-    
+
     public ManagerDTO getLogin(String user, String pass) {
         List<Manager> resultList = em.createNamedQuery("Manager.login")
                 .setParameter("username", user)
                 .setParameter("password", pass).getResultList();
-        if (resultList.size()>0) {
+        if (resultList.size() > 0) {
             return new ManagerDTO(resultList.get(0));
         }
         return null;

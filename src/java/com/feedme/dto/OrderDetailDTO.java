@@ -5,15 +5,12 @@
  */
 package com.feedme.dto;
 
-import com.feedme.entities.Employee;
 import com.feedme.entities.OrderDetail;
 import com.feedme.entities.OrderStatus;
 import com.feedme.info.Information;
 import com.feedme.utils.Json;
 import java.io.Serializable;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -139,11 +136,11 @@ public class OrderDetailDTO implements Serializable{
         o.setEmployee(employee.getEmployee());
     }
 
-    public OrderStatusDTO getStatus() {
-        return new OrderStatusDTO(o.getStatus());
+    public OrderStatus getStatus() {
+        return o.getStatus();
     }
 
-    public void setStatus(OrderStatusDTO status) {
-        o.setStatus(status.getOrderStatus());
+    public void setStatus(OrderStatus status) {
+        o.setStatus(status);
     }
 }

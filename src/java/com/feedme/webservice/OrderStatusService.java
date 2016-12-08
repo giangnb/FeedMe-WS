@@ -5,7 +5,8 @@
  */
 package com.feedme.webservice;
 
-import com.feedme.dto.OrderStatusDTO;
+//import com.feedme.dto.OrderStatusDTO;
+import com.feedme.entities.OrderStatus;
 import java.util.List;
 
 /**
@@ -14,13 +15,13 @@ import java.util.List;
  */
 public interface OrderStatusService {
 
-    public boolean addOrderStatus(OrderStatusDTO dto);
+    public boolean addOrderStatus(OrderStatus os);
 
-    public List<OrderStatusDTO> fetchOrderStatus();
+    public List<OrderStatus> fetchOrderStatus();
 
-    public OrderStatusDTO fetchOrderStatusById(short id);
+    public OrderStatus fetchOrderStatusById(short id);
 
-    public boolean updateOrderStatus(OrderStatusDTO dto);
+    public boolean updateOrderStatus(OrderStatus os);
 
     public boolean removeOrderStatus(short id);
 }

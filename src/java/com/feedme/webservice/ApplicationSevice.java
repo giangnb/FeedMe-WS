@@ -20,12 +20,13 @@ import com.feedme.dto.EmployeeDTO;
 import com.feedme.dto.LogDTO;
 import com.feedme.dto.ManagerDTO;
 import com.feedme.dto.OrderDetailDTO;
-import com.feedme.dto.OrderStatusDTO;
+//import com.feedme.dto.OrderStatusDTO;
 import com.feedme.dto.PriviledgeDTO;
 import com.feedme.dto.ProductDTO;
 import com.feedme.dto.PromotedDTO;
 import com.feedme.dto.PropertyDTO;
 import com.feedme.entities.Manager;
+import com.feedme.entities.OrderStatus;
 import java.util.List;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
@@ -253,26 +254,26 @@ public class ApplicationSevice implements CategoryService,
     // <editor-fold defaultstate="collapsed" desc="Order Status Management">
     @WebMethod(operationName = "addOrderStatus")
     @Override
-    public boolean addOrderStatus(@WebParam(name = "orderStatus") OrderStatusDTO dto) {
-        return new OrderStatusDAO().addOrderStatus(dto);
+    public boolean addOrderStatus(@WebParam(name = "orderStatus") OrderStatus os) {
+        return new OrderStatusDAO().addOrderStatus(os);
     }
 
     @WebMethod(operationName = "fetchOrderStatus")
     @Override
-    public List<OrderStatusDTO> fetchOrderStatus() {
+    public List<OrderStatus> fetchOrderStatus() {
         return new OrderStatusDAO().fetchOrderStatus();
     }
 
     @WebMethod(operationName = "fetchOrderStatusById")
     @Override
-    public OrderStatusDTO fetchOrderStatusById(@WebParam(name = "orderStatusId") short id) {
+    public OrderStatus fetchOrderStatusById(@WebParam(name = "orderStatusId") short id) {
         return new OrderStatusDAO().fetchOrderStatusById(id);
     }
 
     @WebMethod(operationName = "updateOrderStatus")
     @Override
-    public boolean updateOrderStatus(@WebParam(name = "orderStatus") OrderStatusDTO dto) {
-        return new OrderStatusDAO().updateOrderStatus(dto);
+    public boolean updateOrderStatus(@WebParam(name = "orderStatus") OrderStatus os) {
+        return new OrderStatusDAO().updateOrderStatus(os);
     }
 
     @WebMethod(operationName = "")

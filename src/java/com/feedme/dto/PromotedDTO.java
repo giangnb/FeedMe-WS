@@ -5,7 +5,6 @@
  */
 package com.feedme.dto;
 
-import com.feedme.entities.Product;
 import com.feedme.entities.Promoted;
 import java.io.Serializable;
 
