@@ -120,11 +120,13 @@ public class ManagerDAO {
     }
 
     public ManagerDTO getLogin(String user, String pass) {
-        List<Manager> resultList = em.createNamedQuery("Manager.login")
-                .setParameter("username", user)
-                .setParameter("password", pass).getResultList();
+        List<Manager> resultList = em.createNamedQuery("Manager.findByUsername")
+                .setParameter("username", user).getResultList();
         if (resultList.size() > 0) {
             Manager m = resultList.get(0);
+            if (!m.getPassword().equals(Encrypt.hash("8ja374Z0B5sHYud" + pass + "0j4212kE8CQhoPR"))) {
+                return null;
+            }
             trans.begin();
             try {
                 Information info = Json.DeserializeObject(m.getInfo(), Information.class);

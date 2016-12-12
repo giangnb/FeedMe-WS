@@ -386,6 +386,7 @@ public class ApplicationSevice implements CategoryService,
     }
 
     // </editor-fold>
+    
     // <editor-fold defaultstate="collapsed" desc="Property Management">
     @Override
     @WebMethod(operationName = "fetchProperties")
