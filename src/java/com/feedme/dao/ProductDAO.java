@@ -42,22 +42,14 @@ public class ProductDAO {
       }
       
       public ProductDTO fetchProductByName(String name) {
-         ProductDTO dto = new ProductDTO();
+         ProductDTO dto =null;
          List<Product> list  = em.createNamedQuery("Product.findByName").setParameter("name", name).getResultList();
          if (list.isEmpty()) {
             return null;
          }
-         list.forEach((prod)-> {
-             dto.setId(prod.getId());
-             dto.setName(prod.getName());
-             dto.setDescription(prod.getDescription());
-             dto.setPrice(prod.getPrice());
-             dto.setPromotion(prod.getPromotion());
-             dto.setInfo(prod.getInfo());
-             dto.setIsActive(prod.getIsActive());
-             dto.setCategory(prod.getCategory());
-         });
-         
+         for(Product prod:list) {
+           dto = new ProductDTO(prod);
+         }
           return dto;
       }
       
@@ -101,6 +93,7 @@ public class ProductDAO {
         prd.setPromotion(dto.getPromotion());
         prd.setPrice(dto.getPrice());
         prd.setInfo(dto.getInfo());
-        prd.setIsActive(dto.getIsActive()); 
+        prd.setIsActive(dto.getIsActive());
+        prd.setCategory(dto.getCategory().getCategory());
     }
 }

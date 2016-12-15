@@ -84,11 +84,11 @@ public class ProductDTO implements Serializable{
         this.p.setIsActive(isActive);
     }
 
-    public Category getCategory() {
-        return p.getCategory();
+    public CategoryDTO getCategory() {
+        return new CategoryDTO(p.getCategory());
     }
 
-    public void setCategory(Category category) {
-        this.p.setCategory(category);
+    public void setCategory(CategoryDTO categoryDTO) {
+        this.p.setCategory(categoryDTO.getCategory());
     }
 }

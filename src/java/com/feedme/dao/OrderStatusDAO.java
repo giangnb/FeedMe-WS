@@ -76,9 +76,4 @@ public class OrderStatusDAO {
         em.getTransaction().commit();
         return true;
     }
-
-//    private void updateOrderStatusMethod(OrderStatusDTO dto, OrderStatus os) {
-//       os.setName(dto.getName());
-//       os.setIsStopped(dto.getIsStopped());
-//    }
 }
