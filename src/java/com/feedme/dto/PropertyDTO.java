@@ -23,6 +23,10 @@ public class PropertyDTO implements Serializable{
         this.p = p;
     }
 
+    public void setProperty(Property p) {
+        this.p = p;
+    }
+
     public Property getProperty() {
         return p;
     }

@@ -12,25 +12,32 @@ import java.io.Serializable;
  *
  * @author havietduc
  */
-public class PriviledgeDTO implements Serializable{
+public class PriviledgeDTO implements Serializable {
+
     private Priviledge priv;
-    
+
     public PriviledgeDTO() {
         priv = new Priviledge();
     }
-    
+
     public PriviledgeDTO(Priviledge priv) {
         this.priv = priv;
     }
+
+    public void setPriviledge(Priviledge priv) {
+        this.priv = priv;
+    }
+
     public Priviledge getPriviledge() {
         return priv;
     }
+
     public Short getId() {
         return priv.getId();
     }
 
     public void setId(Short id) {
-        this.priv.setId(Short.parseShort(id+""));
+        this.priv.setId(Short.parseShort(id + ""));
     }
 
     public String getName() {
@@ -46,7 +53,7 @@ public class PriviledgeDTO implements Serializable{
     }
 
     public void setDescription(String description) {
-        this.priv.setDescription(description); 
+        this.priv.setDescription(description);
     }
 
     public boolean getView() {

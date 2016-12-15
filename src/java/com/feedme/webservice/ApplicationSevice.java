@@ -279,7 +279,7 @@ public class ApplicationSevice implements CategoryService,
     @WebMethod(operationName = "")
     @Override
     public boolean removeOrderStatus(@WebParam(name = "orderStatusId") short id) {
-       return new OrderStatusDAO().removeOrderStatus(id);
+        return new OrderStatusDAO().removeOrderStatus(id);
     }
     // </editor-fold>
 
@@ -300,7 +300,7 @@ public class ApplicationSevice implements CategoryService,
     @Override
     @WebMethod(operationName = "addPriviledge")
     public boolean addPriviledge(@WebParam(name = "priviledge") PriviledgeDTO dto) {
-       return new PriviledgeDAO().addPriviledge(dto);
+        return new PriviledgeDAO().addPriviledge(dto);
     }
 
     @Override
@@ -312,7 +312,7 @@ public class ApplicationSevice implements CategoryService,
     @Override
     @WebMethod(operationName = "removePriviledge")
     public boolean removePriviledge(@WebParam(name = "priviledId") short id) {
-       return new PriviledgeDAO().removePriviledge(id);
+        return new PriviledgeDAO().removePriviledge(id);
     }
     // </editor-fold>
 
@@ -328,13 +328,13 @@ public class ApplicationSevice implements CategoryService,
     public ProductDTO fetchProductById(@WebParam(name = "productId") short id) {
         return new ProductDAO().fetchProductById(id);
     }
-    
-     @Override
-     @WebMethod(operationName = "fetchProductsByName")
-    public ProductDTO fetchProductByName(@WebParam(name = "productName") String name) {
+
+    @Override
+    @WebMethod(operationName = "fetchProductsByName")
+    public java.util.List<ProductDTO> fetchProductByName(@WebParam(name = "productName") String name) {
         return new ProductDAO().fetchProductByName(name);
     }
-    
+
     @Override
     @WebMethod(operationName = "addProduct")
     public boolean addProduct(@WebParam(name = "product") ProductDTO dto) {
@@ -344,7 +344,7 @@ public class ApplicationSevice implements CategoryService,
     @Override
     @WebMethod(operationName = "updateProduct")
     public boolean updateProduct(@WebParam(name = "updateProduct") ProductDTO dto) {
-       return new ProductDAO().updateProduct(dto);
+        return new ProductDAO().updateProduct(dto);
     }
 
     @Override
@@ -370,7 +370,7 @@ public class ApplicationSevice implements CategoryService,
     @Override
     @WebMethod(operationName = "addPromoted")
     public boolean addPromoted(@WebParam(name = "promoted") PromotedDTO dto) {
-       return new PromotedDAO().addPromoted(dto);
+        return new PromotedDAO().addPromoted(dto);
     }
 
     @Override
@@ -386,7 +386,6 @@ public class ApplicationSevice implements CategoryService,
     }
 
     // </editor-fold>
-    
     // <editor-fold defaultstate="collapsed" desc="Property Management">
     @Override
     @WebMethod(operationName = "fetchProperties")
@@ -403,21 +402,20 @@ public class ApplicationSevice implements CategoryService,
     @Override
     @WebMethod(operationName = "addPropertie")
     public boolean addProperty(@WebParam(name = "property") PropertyDTO dto) {
-       return new PropertyDAO().addProperty(dto);
+        return new PropertyDAO().addProperty(dto);
     }
 
     @Override
     @WebMethod(operationName = "updateProperties")
     public boolean updateProperty(@WebParam(name = "propertyUpdate") PropertyDTO dto) {
-       return new PropertyDAO().updateProperty(dto);
+        return new PropertyDAO().updateProperty(dto);
     }
 
     @Override
     @WebMethod(operationName = "removeProperties")
     public boolean removeProperty(@WebParam(name = "propertyKey") String key) {
-       return new PropertyDAO().removeProperty(key);
+        return new PropertyDAO().removeProperty(key);
     }
     // </editor-fold>
 
-   
 }

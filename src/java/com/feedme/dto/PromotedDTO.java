@@ -19,6 +19,10 @@ public class PromotedDTO implements Serializable{
         this.p = p;
     }
 
+    public void setPromoted(Promoted p) {
+        this.p = p;
+    }
+
     public Promoted getPromoted() {
         return p;
     }

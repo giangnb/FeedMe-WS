@@ -5,7 +5,6 @@
  */
 package com.feedme.dto;
 
-import com.feedme.entities.Category;
 import com.feedme.entities.Product;
 import java.io.Serializable;
 
@@ -21,6 +20,10 @@ public class ProductDTO implements Serializable{
     }
 
     public ProductDTO(Product p) {
+        this.p = p;
+    }
+
+    public void setProduct(Product p) {
         this.p = p;
     }
     

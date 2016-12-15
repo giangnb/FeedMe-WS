@@ -18,7 +18,7 @@ public interface ProductService {
 
     public ProductDTO fetchProductById(short id);
     
-    public ProductDTO fetchProductByName(String name);
+    public List<ProductDTO> fetchProductByName(String name);
 
     public boolean addProduct(ProductDTO dto);
 
