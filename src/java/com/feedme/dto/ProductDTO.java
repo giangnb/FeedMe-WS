@@ -79,6 +79,14 @@ public class ProductDTO implements Serializable{
         this.p.setInfo(info);
     }
 
+    public String getImageUrl() {
+        return p.getImageFile();
+    }
+
+    public void setImageUrl(String img) {
+        this.p.setImageFile(img);
+    }
+
     public boolean getIsActive() {
         return p.getIsActive();
     }

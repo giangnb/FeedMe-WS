@@ -154,6 +154,14 @@ public class Product implements Serializable {
         this.category = category;
     }
 
+    public String getImageFile() {
+        return imageFile;
+    }
+
+    public void setImageFile(String imageFile) {
+        this.imageFile = imageFile;
+    }
+
     @XmlTransient
     public List<Promoted> getPromotedList() {
         return promotedList;

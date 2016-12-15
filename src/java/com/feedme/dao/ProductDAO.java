@@ -89,6 +89,7 @@ public class ProductDAO {
         prd.setPromotion(dto.getPromotion());
         prd.setPrice(dto.getPrice());
         prd.setInfo(dto.getInfo());
+        prd.setImageFile(dto.getImageUrl());
         prd.setIsActive(dto.getIsActive());
         prd.setCategory(dto.getCategory().getCategory());
     }
