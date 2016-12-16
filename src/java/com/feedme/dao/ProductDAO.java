@@ -62,7 +62,15 @@ public class ProductDAO {
         }
         trans.begin();
         try {
-            updateProd(prd, dto);
+            prd.setId(dto.getId());
+            prd.setName(dto.getName());
+            prd.setDescription(dto.getDescription());
+            prd.setPromotion(dto.getPromotion());
+            prd.setPrice(dto.getPrice());
+            prd.setInfo(dto.getInfo());
+            prd.setImageFile(dto.getImageUrl());
+            prd.setIsActive(dto.getIsActive());
+            prd.setCategory(dto.getCategory().getCategory());
             trans.commit();
             return true;
         } catch (Exception e) {
@@ -80,17 +88,5 @@ public class ProductDAO {
         em.remove(p);
         trans.commit();
         return true;
-    }
-
-    private void updateProd(Product prd, ProductDTO dto) {
-        prd.setId(dto.getId());
-        prd.setName(dto.getName());
-        prd.setDescription(dto.getDescription());
-        prd.setPromotion(dto.getPromotion());
-        prd.setPrice(dto.getPrice());
-        prd.setInfo(dto.getInfo());
-        prd.setImageFile(dto.getImageUrl());
-        prd.setIsActive(dto.getIsActive());
-        prd.setCategory(dto.getCategory().getCategory());
     }
 }
