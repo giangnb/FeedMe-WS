@@ -73,27 +73,17 @@ public class OrderDetailDAO {
         return true;
     }
     
-    public List<OrderDetailDTO> getAll(long from, long to) {
-        List<OrderDetailDTO> list = new ArrayList<>();
-        List<OrderDetail> resultList = em.createNamedQuery("OrderDetail.findByTime")
-                .setParameter("from", from+"")
-                .setParameter("to", to+"").getResultList();
-        for (OrderDetail o : resultList) {
-            list.add(new OrderDetailDTO(o));
-        }
-        return list;
+    public List<OrderDetail> getAll(String from, String to) {
+        return em.createNamedQuery("OrderDetail.findByTime")
+                .setParameter("from", from)
+                .setParameter("to", to).getResultList();
     }
     
-    public List<OrderDetailDTO> getByEmployee(long from, long to, EmployeeDTO e) {
-        List<OrderDetailDTO> list = new ArrayList<>();
-        List<OrderDetail> resultList = em.createNamedQuery("OrderDetail.findByEmployee")
+    public List<OrderDetail> getByEmployee(String from, String to, EmployeeDTO e) {
+        return em.createNamedQuery("OrderDetail.findByEmployee")
                 .setParameter("employee", e.getEmployee())
-                .setParameter("from", from+"")
-                .setParameter("to", to+"").getResultList();
-        for (OrderDetail o : resultList) {
-            list.add(new OrderDetailDTO(o));
-        }
-        return list;
+                .setParameter("from", from)
+                .setParameter("to", to).getResultList();
     }
     
     public OrderDetailDTO getById(int id) {

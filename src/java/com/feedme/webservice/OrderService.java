@@ -6,6 +6,7 @@
 package com.feedme.webservice;
 
 import com.feedme.dto.OrderDetailDTO;
+import com.feedme.entities.OrderDetail;
 import java.util.List;
 
 /**
@@ -16,7 +17,7 @@ public interface OrderService {
     boolean addOrder(OrderDetailDTO o);
     boolean updateOrder(OrderDetailDTO o);
     boolean removeOrder(int id);
-    List<OrderDetailDTO> fetchOrders(String from, String to);
-    List<OrderDetailDTO> fetchOrdersByEmployee(String from, String to, short id);
+    List<OrderDetail> fetchOrders(String from, String to);
+    List<OrderDetail> fetchOrdersByEmployee(String from, String to, short id);
     OrderDetailDTO fetchOrderById(int id);
 }

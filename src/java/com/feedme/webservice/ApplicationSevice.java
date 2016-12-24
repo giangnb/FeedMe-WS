@@ -26,6 +26,7 @@ import com.feedme.dto.ProductDTO;
 import com.feedme.dto.PromotedDTO;
 import com.feedme.dto.PropertyDTO;
 import com.feedme.entities.Manager;
+import com.feedme.entities.OrderDetail;
 import com.feedme.entities.OrderStatus;
 import java.util.List;
 import javax.jws.WebService;
@@ -209,15 +210,15 @@ public class ApplicationSevice implements CategoryService,
 
     @WebMethod(operationName = "fetchOrders")
     @Override
-    public List<OrderDetailDTO> fetchOrders(@WebParam(name = "fromTime") String from, @WebParam(name = "toTime") String to) {
-        return new OrderDetailDAO().getAll(Long.parseLong(from), Long.parseLong(to));
+    public List<OrderDetail> fetchOrders(@WebParam(name = "fromTime") String from, @WebParam(name = "toTime") String to) {
+        return new OrderDetailDAO().getAll(from, to);
     }
 
     @WebMethod(operationName = "fetchOrdersByEmployee")
     @Override
-    public List<OrderDetailDTO> fetchOrdersByEmployee(@WebParam(name = "fromTime") String from, @WebParam(name = "toTime") String to, @WebParam(name = "employeeId") short id) {
+    public List<OrderDetail> fetchOrdersByEmployee(@WebParam(name = "fromTime") String from, @WebParam(name = "toTime") String to, @WebParam(name = "employeeId") short id) {
         EmployeeDTO emp = new EmployeeDAO().getById(id);
-        return new OrderDetailDAO().getByEmployee(Long.parseLong(from), Long.parseLong(to), emp);
+        return new OrderDetailDAO().getByEmployee(from, to, emp);
     }
 
     @WebMethod(operationName = "fetchOrderById")
