@@ -20,6 +20,8 @@ public interface ProductService {
     
     public List<ProductDTO> fetchProductByName(String name);
     
+    public List<ProductDTO> fetchProductByCategory(com.feedme.entities.Category category);
+    
     public List<ProductDTO> fetchProductByNameAndCategory(String name, com.feedme.entities.Category cat);
 
     public boolean addProduct(ProductDTO dto);

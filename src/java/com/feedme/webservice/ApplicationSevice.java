@@ -335,6 +335,12 @@ public class ApplicationSevice implements CategoryService,
     public java.util.List<ProductDTO> fetchProductByName(@WebParam(name = "productName") String name) {
         return new ProductDAO().fetchProductByName(name);
     }
+    
+    @Override
+    @WebMethod(operationName = "fetchProductByCategory")
+    public List<ProductDTO> fetchProductByCategory(@WebParam(name = "category") com.feedme.entities.Category category) {
+        return new ProductDAO().fetchProductByCategory(category);
+    }
 
     @Override
     @WebMethod(operationName = "fetchProductByNameAndCategory")
@@ -364,8 +370,14 @@ public class ApplicationSevice implements CategoryService,
     // <editor-fold defaultstate="collapsed" desc="Promoted Management">
     @Override
     @WebMethod(operationName = "fetchPromoteds")
-    public List<PromotedDTO> fetchPromoteds() {
+    public List<com.feedme.entities.Promoted> fetchPromoteds() {
         return new PromotedDAO().fetchPromoteds();
+    }
+    
+    @Override
+    @WebMethod(operationName = "fetchPromotedByTimestamp")
+    public List<com.feedme.entities.Promoted> fetchPromotedByTimestamp(@WebParam(name = "timestamp") String timestamp) {
+        return new PromotedDAO().fetchPromotedByTimestamp(timestamp);
     }
 
     @Override

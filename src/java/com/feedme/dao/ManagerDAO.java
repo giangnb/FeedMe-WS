@@ -13,8 +13,6 @@ import com.feedme.utils.Json;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
@@ -34,12 +32,6 @@ public class ManagerDAO {
     }
 
     public boolean add(ManagerDTO m) {
-        try {
-            Information inf = Json.DeserializeObject(m.getInfo(), Information.class);
-            inf.put("_lastChanged", new Date().getTime() + "");
-            m.setInfo(Json.SerializeObject(inf));
-        } catch (Exception ex) {
-        }
         m.setPassword(Encrypt.hash("8ja374Z0B5sHYud" + m.getPassword() + "0j4212kE8CQhoPR"));
         trans.begin();
         em.persist(m.getManager());
@@ -68,12 +60,6 @@ public class ManagerDAO {
 
     public boolean updatePassword(ManagerDTO manager) {
         Manager m = manager.getManager();
-        try {
-            Information inf = Json.DeserializeObject(m.getInfo(), Information.class);
-            inf.put("_lastChanged", new Date().getTime() + "");
-            m.setInfo(Json.SerializeObject(inf));
-        } catch (Exception ex) {
-        }
         Manager find = em.find(Manager.class, m.getId());
         if (find == null) {
             return false;
@@ -126,16 +112,6 @@ public class ManagerDAO {
             Manager m = resultList.get(0);
             if (!m.getPassword().equals(Encrypt.hash("8ja374Z0B5sHYud" + pass + "0j4212kE8CQhoPR"))) {
                 return null;
-            }
-            trans.begin();
-            try {
-                Information info = Json.DeserializeObject(m.getInfo(), Information.class);
-                info.put("_lastLogin", new Date().getTime()+"");
-                m.setInfo(Json.SerializeObject(info));
-                update(new ManagerDTO(m));
-                trans.commit();
-            } catch (Exception ex) {
-                trans.rollback();
             }
             return new ManagerDTO(m);
         }

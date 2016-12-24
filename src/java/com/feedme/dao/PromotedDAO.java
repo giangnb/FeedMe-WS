@@ -26,13 +26,13 @@ public class PromotedDAO {
         trans = em.getTransaction();
     }
     
-    public List<PromotedDTO> fetchPromoteds() {
-        List<PromotedDTO> list = new ArrayList<>();
-        List<Promoted> entityList = em.createNamedQuery("Promoted.findAll").getResultList();
-        entityList.forEach((promoted) -> {
-           list.add(new PromotedDTO(promoted));
-        });
-        return list;
+    public List<Promoted> fetchPromoteds() {
+        return em.createNamedQuery("Promoted.findAll").getResultList();
+    }
+    
+    public List<Promoted> fetchPromotedByTimestamp(String timestamp) {
+        return em.createNamedQuery("Promoted.findByTimestamp")
+                .setParameter("timestamp", timestamp).getResultList();
     }
     
     public PromotedDTO fetchPromotedById(int id) {

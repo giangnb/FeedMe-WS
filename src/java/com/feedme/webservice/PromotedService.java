@@ -6,6 +6,7 @@
 package com.feedme.webservice;
 
 import com.feedme.dto.PromotedDTO;
+import com.feedme.entities.Promoted;
 import java.util.List;
 
 /**
@@ -14,7 +15,9 @@ import java.util.List;
  */
 public interface PromotedService {
 
-    public List<PromotedDTO> fetchPromoteds();
+    public List<Promoted> fetchPromoteds();
+    
+    public List<Promoted> fetchPromotedByTimestamp(String timestamp);
 
     public PromotedDTO fetchPromotedById(int id);
 

@@ -29,6 +29,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Promoted.findAll", query = "SELECT p FROM Promoted p")
     , @NamedQuery(name = "Promoted.findById", query = "SELECT p FROM Promoted p WHERE p.id = :id")
+    , @NamedQuery(name = "Promoted.findByTimestamp", query = "SELECT p FROM Promoted p WHERE :timestamp BETWEEN p.fromTime AND p.toTime")
     , @NamedQuery(name = "Promoted.findByFromTime", query = "SELECT p FROM Promoted p WHERE p.fromTime = :fromTime")
     , @NamedQuery(name = "Promoted.findByToTime", query = "SELECT p FROM Promoted p WHERE p.toTime = :toTime")})
 public class Promoted implements Serializable {

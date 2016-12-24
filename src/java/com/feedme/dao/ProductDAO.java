@@ -45,12 +45,19 @@ public class ProductDAO {
     }
 
     public List<ProductDTO> fetchProductByName(String name) {
-        return em.createNamedQuery("Product.findByName").setParameter("name", name).getResultList();
+        return em.createNamedQuery("Product.findByName")
+                .setParameter("name", "%"+name.trim().replace(" ", "%")+"%")
+                .getResultList();
+    }
+
+    public List<ProductDTO> fetchProductByCategory(com.feedme.entities.Category category) {
+        return em.createNamedQuery("Product.findByCategory")
+                .setParameter("category", category).getResultList();
     }
 
     public List<ProductDTO> fetchProductByNameAndCategory(String name, com.feedme.entities.Category cat) {
         return em.createNamedQuery("Product.findByNameAndCategory")
-                .setParameter("name", name)
+                .setParameter("name", "%"+name.trim().replace(" ", "%")+"%")
                 .setParameter("category", cat)
                 .getResultList();
     }
