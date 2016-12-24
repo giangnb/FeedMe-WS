@@ -209,15 +209,15 @@ public class ApplicationSevice implements CategoryService,
 
     @WebMethod(operationName = "fetchOrders")
     @Override
-    public List<OrderDetailDTO> fetchOrders(@WebParam(name = "fromTime") long from, @WebParam(name = "toTime") long to) {
-        return new OrderDetailDAO().getAll(from, to);
+    public List<OrderDetailDTO> fetchOrders(@WebParam(name = "fromTime") String from, @WebParam(name = "toTime") String to) {
+        return new OrderDetailDAO().getAll(Long.parseLong(from), Long.parseLong(to));
     }
 
     @WebMethod(operationName = "fetchOrdersByEmployee")
     @Override
-    public List<OrderDetailDTO> fetchOrdersByEmployee(@WebParam(name = "fromTime") long from, @WebParam(name = "toTime") long to, @WebParam(name = "employeeId") short id) {
+    public List<OrderDetailDTO> fetchOrdersByEmployee(@WebParam(name = "fromTime") String from, @WebParam(name = "toTime") String to, @WebParam(name = "employeeId") short id) {
         EmployeeDTO emp = new EmployeeDAO().getById(id);
-        return new OrderDetailDAO().getByEmployee(from, to, emp);
+        return new OrderDetailDAO().getByEmployee(Long.parseLong(from), Long.parseLong(to), emp);
     }
 
     @WebMethod(operationName = "fetchOrderById")
@@ -336,6 +336,12 @@ public class ApplicationSevice implements CategoryService,
     }
 
     @Override
+    @WebMethod(operationName = "fetchProductByNameAndCategory")
+    public java.util.List<ProductDTO> fetchProductByNameAndCategory(@WebParam(name = "productName") String name, @WebParam(name = "category") com.feedme.entities.Category cat) {
+        return new ProductDAO().fetchProductByNameAndCategory(name, cat);
+    }
+
+    @Override
     @WebMethod(operationName = "addProduct")
     public boolean addProduct(@WebParam(name = "product") ProductDTO dto) {
         return new ProductDAO().addProduct(dto);
@@ -386,6 +392,7 @@ public class ApplicationSevice implements CategoryService,
     }
 
     // </editor-fold>
+    
     // <editor-fold defaultstate="collapsed" desc="Property Management">
     @Override
     @WebMethod(operationName = "fetchProperties")

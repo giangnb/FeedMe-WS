@@ -19,6 +19,8 @@ public interface ProductService {
     public ProductDTO fetchProductById(short id);
     
     public List<ProductDTO> fetchProductByName(String name);
+    
+    public List<ProductDTO> fetchProductByNameAndCategory(String name, com.feedme.entities.Category cat);
 
     public boolean addProduct(ProductDTO dto);
 

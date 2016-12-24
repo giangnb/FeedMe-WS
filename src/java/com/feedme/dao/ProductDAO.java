@@ -48,6 +48,13 @@ public class ProductDAO {
         return em.createNamedQuery("Product.findByName").setParameter("name", name).getResultList();
     }
 
+    public List<ProductDTO> fetchProductByNameAndCategory(String name, com.feedme.entities.Category cat) {
+        return em.createNamedQuery("Product.findByNameAndCategory")
+                .setParameter("name", name)
+                .setParameter("category", cat)
+                .getResultList();
+    }
+
     public boolean addProduct(ProductDTO dto) {
         trans.begin();
         em.persist(dto.getProduct());

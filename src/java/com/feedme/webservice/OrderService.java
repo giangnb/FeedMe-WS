@@ -16,7 +16,7 @@ public interface OrderService {
     boolean addOrder(OrderDetailDTO o);
     boolean updateOrder(OrderDetailDTO o);
     boolean removeOrder(int id);
-    List<OrderDetailDTO> fetchOrders(long from, long to);
-    List<OrderDetailDTO> fetchOrdersByEmployee(long from, long to, short id);
+    List<OrderDetailDTO> fetchOrders(String from, String to);
+    List<OrderDetailDTO> fetchOrdersByEmployee(String from, String to, short id);
     OrderDetailDTO fetchOrderById(int id);
 }
